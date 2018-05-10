@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../font/icomoon.eot?3j1qlh');
+  src:  url('../font/icomoon.eot?3j1qlh#iefix') format('embedded-opentype'),
+    url('../font/icomoon.ttf?3j1qlh') format('truetype'),
+    url('../font/icomoon.woff?3j1qlh') format('woff'),
+    url('../font/icomoon.svg?3j1qlh#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.vjs-icon-play-next, .video-js .vjs-play-next-buttons .vjs-icon-placeholder {
+  font-family: icomoon;
+  font-weight: normal;
+  font-style: normal; }
+.icon-next2:before, .video-js .vjs-play-next-buttons .vjs-icon-placeholder:before {
+    content: "\ea24"; }
+
+.video-js .vjs-play-next-buttons {
+    cursor: pointer;
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+     padding-left: 2em; 
+     padding-right: 2em; 
+     padding-bottom: 3em; 
+}

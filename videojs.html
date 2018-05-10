@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>video.js</title>
+	<link rel="stylesheet" type="text/css" href="./css/video-js.css">
+	<link rel="stylesheet" type="text/css" href="./css/videojs-playlist-ui.css">
+	<link rel="stylesheet" type="text/css" href="./css/play-next.css">
+	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css" >
+	<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" > -->
+	<!-- <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/video.js"></script>
+	<script type="text/javascript" src="./js/videojs-playlist.js"></script>
+	<script type="text/javascript" src="./js/videojs-playlist-ui.js"></script>
+	<script type="text/javascript" src="./js/videojs-play-next-buttons.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+	<script type="text/javascript" src="./js/zh-CN.js"></script>
+	<style type="text/css">		
+		.player-container {
+	      background: #1a1a1a;
+	      overflow: auto;
+	      width: 940px;
+	      height: 400px;
+	    }
+	    .video-js {
+	      float: left;
+	    }
+	    .vjs-playlist {
+	     /* float: right;
+	      width: auto;*/
+	      height:100%;
+	      overflow:auto;
+	      background: #333;
+	    }
+	  	/*.vjs-poster,.vjs-text-track-display,.video-js .vjs-tech{
+
+	  		width: 70%;
+	  	}*/
+	</style>
+
+</head>
+
+<body>
+	<div class="player-container">
+		<video id="video" class="video-js vjs-default-skin" controls preload="none" width="640" height="400" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+		    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+		    
+		    <!-- <track kind="captions" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+		    <!-- Tracks need an ending tag thanks to IE9 -->
+		    <!-- <track kind="subnames" src="../shared/example-captions.vtt" srclang="en" label="English"></track> -->
+		    <!-- Tracks need an ending tag thanks to IE9 -->
+		    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+	  	</video>
+	  	<div class="vjs-playlist">
+	      <!--   The contents of this element will be filled based on the
+	        currently loaded playlist -->
+	    </div>
+	</div>
+  	<script type="text/javascript">
+		var player = videojs('#video',{
+			controls: true  //控制条
+			,preload: 'none' //是否自动加载
+			,autoplay: false  //是否自动播放
+			// ,width: "810"
+	  //   ,height: "462"
+	  //   ,poster: "http://vjs.zencdn.net/v/oceans.png"  // 播放前的画面
+	  //   ,remainingTime: true
+	  //   ,currentTime: true
+			,controlBar: {
+			    volumePanel: {
+			      inline: false
+			    }
+			,volumeMenuButton: { //竖着的音量条
+				inline: false,
+				vertical: true
+			}
+			}
+		});
+		player.addChild('titleBar', {text: '这里是标题'});
+		player.on('play',function(){
+			$(".vjs-title-bar").css('display','none');
+		});
+		player.on('pause',function(){
+			$(".vjs-title-bar").css('display','block');
+		});
+		player.playlist([{
+		  sources: [{
+		    src: 'http://vodeweylgie.vod.126.net/vodeweylgie/730c007433094971b6df3c7cfbabe3bd_1514337494842_1514337994186_74990905-00000.mp4',
+		    type: 'video/mp4'
+		  }],
+		  poster: 'http://media.w3.org/2010/05/sintel/poster.png',
+		  name:'股小白'		  
+		}, {
+		  sources: [{
+		    src: 'http://media.w3.org/2010/05/bunny/trailer.mp4',
+		    type: 'video/mp4'
+		  }],
+		  poster: 'http://media.w3.org/2010/05/bunny/poster.png',
+		  name:'兔八哥'
+		}, {
+		  sources: [{
+		    src: 'http://vjs.zencdn.net/v/oceans.mp4',
+		    type: 'video/mp4'
+		  }],
+		  poster: 'http://www.videojs.com/img/poster.jpg',
+		  name:'捕鱼'
+		}, {
+		  sources: [{
+		    src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
+		    type: 'video/mp4'
+		  }],
+		  poster: 'http://media.w3.org/2010/05/bunny/poster.png',
+		  name:'兔八歌2'
+		}, {
+		  sources: [{
+		    src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
+		    type: 'video/mp4'
+		  }],
+		  poster: 'http://media.w3.org/2010/05/video/poster.png',
+		  name:'哈哈，无奈'
+		}]);
+		// Play through the playlist automatically.
+		player.playlist.autoadvance(0);		
+		player.playlistUi();
+		player.playNextButtons();
+	</script>	
+</body>
+</html>
